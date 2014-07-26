@@ -8,6 +8,7 @@
 
 #import "TPIPlaylistSelectionWindowController.h"
 #import "TPICheckboxTableCellView.h"
+#import "TPITextCellView.h"
 @interface TPIPlaylistSelectionWindowController ()
 
 @end
@@ -29,6 +30,8 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    [self.statusText setStringValue:@"Loading Library..."];
+    [self.activityIndicator startAnimation:nil];;
     NSLog(@"Fetching plist: %@", [self.itunesURL absoluteString]);
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     
@@ -49,7 +52,10 @@
     
 
     [self.tableView reloadData];
-    NSLog(@"DONE");
+    [self.activityIndicator stopAnimation:nil];
+    [self.statusText setStringValue:@"Ready for export."];
+//    [self.loadingBar setHidden:YES];
+
 
 }
 
@@ -81,9 +87,20 @@
         cellView.checkbox.title = [[self.playlists objectAtIndex:row] objectForKey:@"Name"];
         return cellView;
     }
+    else if ([identifier isEqualToString:@"countColumn"]) {
+        NSTableCellView *cellView = [tableView makeViewWithIdentifier:@"countCell" owner:self];
+        NSLog(@" CELL%@", cellView);
+        cellView.backgroundStyle = NSBackgroundStyleDark;
+//        NSArray *items = [[self.playlists objectAtIndex:row] objectForKey:@"Playlist Items"];
+//        cellView.textField.stringValue = [NSString stringWithFormat:@"%ld", [items count]];
+//        cellView.label.stringValue = @"sdf";
+//        cellView.stringValue = @"dasfdf";
+        [cellView.textField setStringValue:@"dsf"];
+    }
     return nil;
 }
 
+#pragma mark - Data Stuff
 
 -(NSArray*)getSelectedPlaylists {
     int i = 0;
@@ -99,6 +116,18 @@
 }
 
 - (IBAction)copyMusicButton:(id)sender {
+    //probs should re-write for async.
+    [self doCopyMusic];
+    
+    
+}
+
+
+-(void)doCopyMusic {
+    [self.activityIndicator startAnimation:nil];
+    
+    [self.statusText setStringValue:@"Waiting for selection of destination folder..."];
+    
     //Show a file picker to place the music in
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];
     
@@ -114,6 +143,7 @@
     NSURL *folderURL;
     // Display the dialog.  If the OK button was pressed,
     // process the files.
+    [self.statusText setStringValue:@"Exporting Music. This can take a while..."];
     if ( [openDlg runModal] == NSOKButton )
     {
         // Get an array containing the full filenames of all
@@ -129,9 +159,12 @@
     }
     else {
         //TODO do something if they cancel.
+        [self.statusText setStringValue:@"Export Cancelled. User did not select a destination"];
+        [self.activityIndicator stopAnimation:nil];
         return;
         
     }
+    
     
     
     
@@ -148,8 +181,10 @@
     
     NSArray *selectedPlaylists = [self getSelectedPlaylists];
     
+    
     //Loop through playlists, generate M3U's AND
     NSMutableArray *requiredSongs = [NSMutableArray array];
+    
     for (NSDictionary *playlist in selectedPlaylists) {
         //M3U for this playlist.
         NSString *playlistString = @"#EXTM3U\n";
@@ -162,7 +197,7 @@
             NSString *album = [song objectForKey:@"Album"];
             NSString *songTitle = [song objectForKey:@"Name"];
             NSString *baseLoc = [[song objectForKey:@"Location"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSString *location = [NSString stringWithFormat:@"./Collection/%@/%@/%@", artist, album, [baseLoc lastPathComponent] ];
+            NSString *location = [NSString stringWithFormat:@"./Collection  s/%@/%@/%@", artist, album, [baseLoc lastPathComponent] ];
             NSString *songM3ULine = [NSString stringWithFormat:@"#EXTINF:%d,%@ - %@\n%@", [songID intValue], songTitle, artist, location];
             playlistString = [playlistString stringByAppendingString:songM3ULine];
             playlistString = [playlistString stringByAppendingString:@"\n"];
@@ -172,22 +207,34 @@
         }
         NSString *playlistFile = [NSString stringWithFormat:@"%@%@.m3u", playlistFolder, [playlist objectForKey:@"Name"]];
         [[NSFileManager defaultManager] createFileAtPath:playlistFile contents:[playlistString dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+        
+        
+        //        Update progress bar.
+        
     }
     
     
+    [self.statusText setStringValue:@"Copying Song Files."];
+    
+    NSInteger songCount = [requiredSongs count];
+    NSInteger i = 1;
+    
     NSMutableArray *songPathsErrors = [NSMutableArray array];
     for (NSNumber *songID in requiredSongs) {
+        [self.statusText setStringValue:[NSString stringWithFormat:@"Copying Song Files. %ld of %ld", i, songCount]];
+        
+        
         //    Look up song locations.
         //    Copy the music to the desired folder.
         //    Easy peasy.
         NSDictionary *song = [[itunesData objectForKey:@"Tracks"] objectForKey:[songID stringValue]];
         
         NSString *basicLocation = [[[song objectForKey:@"Location"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
-
+        
         if ([[NSFileManager defaultManager] fileExistsAtPath:basicLocation]) {
             //Song Exists
             
-            NSLog(@"Source: %@", basicLocation);
+//            NSLog(@"Source: %@", basicLocation);
             NSString *filename = [basicLocation lastPathComponent];
             
             NSString *artist = [song objectForKey:@"Artist"];
@@ -195,25 +242,35 @@
             
             [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithFormat:@"%@%@/%@/", musicFolder, artist, album] withIntermediateDirectories:YES attributes:nil error:nil];
             NSString *dest = [NSString stringWithFormat:@"%@%@/%@/%@", musicFolder, artist, album, filename];
-            NSLog(@"Dest: %@", dest);
+//            NSLog(@"Dest: %@", dest);
             NSError *error;
-            [[NSFileManager defaultManager] copyItemAtPath:basicLocation toPath:dest error:&error];
-            if (error) {
-                [song setValue:error.localizedDescription forKey:@"error"];
+            if (![[NSFileManager defaultManager] fileExistsAtPath:dest]) {
+                [[NSFileManager defaultManager] copyItemAtPath:basicLocation toPath:dest error:&error];
+                if (error) {
+                    [song setValue:error.localizedDescription forKey:@"error"];
+                }
             }
+            else {
+//                NSLog(@"FILE EXISTS;");
+            }
+            
         }
         else {
             //Song Doesn't Exist or isn't readable by us
             [song setValue:@"Could not load song" forKey:@"error"];
             [songPathsErrors addObject:song];
         }
+        i++;
+        
+        
+        
     }
-
+    
     NSLog(@"Errors: %@", songPathsErrors);
     
+    [self.statusText setStringValue:@"Export Complete"];
+    [self.activityIndicator stopAnimation:nil];
+
 }
 
-- (IBAction)generateM3UButton:(id)sender {
-    [self getSelectedPlaylists];
-}
 @end

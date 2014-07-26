@@ -23,6 +23,7 @@
 		600814A71982B142003C1138 /* TPISelectFileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 600814A51982B142003C1138 /* TPISelectFileWindowController.m */; };
 		600814A81982B142003C1138 /* TPISelectFileWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600814A61982B142003C1138 /* TPISelectFileWindowController.xib */; };
 		600814AE1982BD0D003C1138 /* TPICheckboxTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600814AD1982BD0D003C1138 /* TPICheckboxTableCellView.m */; };
+		600814B119836A1E003C1138 /* TPITextCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600814B019836A1E003C1138 /* TPITextCellView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		600814A61982B142003C1138 /* TPISelectFileWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TPISelectFileWindowController.xib; path = Windows/TPISelectFileWindowController.xib; sourceTree = "<group>"; };
 		600814AC1982BD0D003C1138 /* TPICheckboxTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPICheckboxTableCellView.h; sourceTree = "<group>"; };
 		600814AD1982BD0D003C1138 /* TPICheckboxTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPICheckboxTableCellView.m; sourceTree = "<group>"; };
+		600814AF19836A1E003C1138 /* TPITextCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPITextCellView.h; sourceTree = "<group>"; };
+		600814B019836A1E003C1138 /* TPITextCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPITextCellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +140,8 @@
 				6008149F1982B100003C1138 /* TPIPlaylistSelectionWindowController.h */,
 				600814A01982B100003C1138 /* TPIPlaylistSelectionWindowController.m */,
 				600814A11982B100003C1138 /* TPIPlaylistSelectionWindowController.xib */,
+				600814AF19836A1E003C1138 /* TPITextCellView.h */,
+				600814B019836A1E003C1138 /* TPITextCellView.m */,
 				600814AC1982BD0D003C1138 /* TPICheckboxTableCellView.h */,
 				600814AD1982BD0D003C1138 /* TPICheckboxTableCellView.m */,
 				600814791982A886003C1138 /* Images.xcassets */,
@@ -277,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				600814A21982B100003C1138 /* TPIPlaylistSelectionWindowController.m in Sources */,
+				600814B119836A1E003C1138 /* TPITextCellView.m in Sources */,
 				600814751982A886003C1138 /* TPIAppDelegate.m in Sources */,
 				600814A71982B142003C1138 /* TPISelectFileWindowController.m in Sources */,
 				600814AE1982BD0D003C1138 /* TPICheckboxTableCellView.m in Sources */,
