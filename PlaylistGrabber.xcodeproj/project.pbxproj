@@ -501,6 +501,7 @@
 				600814911982A887003C1138 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		600814921982A887003C1138 /* Build configuration list for PBXNativeTarget "PlaylistGrabberTests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +510,7 @@
 				600814941982A887003C1138 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

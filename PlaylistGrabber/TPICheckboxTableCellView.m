@@ -9,6 +9,7 @@
 #import "TPICheckboxTableCellView.h"
 
 @implementation TPICheckboxTableCellView
+@synthesize delegate;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -24,6 +25,9 @@
     [super drawRect:dirtyRect];
     
     // Drawing code here.
+}
+-(void)cellWasChanged:(id)sender {
+    [delegate CellTickedWasChanged:self row:self.row];
 }
 
 @end

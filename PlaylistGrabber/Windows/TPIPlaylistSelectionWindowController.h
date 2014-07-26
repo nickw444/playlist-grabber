@@ -7,13 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
-@interface TPIPlaylistSelectionWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate>
+#import "TPICheckboxTableCellView.h"
+@interface TPIPlaylistSelectionWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, TPICheckboxTableCellViewDelegate>
 - (IBAction)copyMusicButton:(id)sender;
 @property (weak) IBOutlet NSTableView *tableView;
 @property (weak) IBOutlet NSProgressIndicator *activityIndicator;
 
 @property (weak) IBOutlet NSTextField *statusText;
+- (IBAction)saveSelected:(id)sender;
 
 @property (nonatomic, retain) NSURL *itunesURL;
 @property (nonatomic, retain) NSDictionary *itunesData;

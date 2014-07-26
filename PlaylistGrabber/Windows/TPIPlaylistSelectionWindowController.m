@@ -7,7 +7,7 @@
 //
 
 #import "TPIPlaylistSelectionWindowController.h"
-#import "TPICheckboxTableCellView.h"
+
 #import "TPITextCellView.h"
 @interface TPIPlaylistSelectionWindowController ()
 
@@ -50,6 +50,15 @@
     
 //    NSLog(@"%@", [[plistData objectForKey:@"Tracks"] objectForKey:@"261"]);
     
+    //Loop through last selected playlists just so we can restore the last synced ones.
+    for (NSDictionary *playlist in [[NSUserDefaults standardUserDefaults] objectForKey:@"LastPlaylists"]) {
+        for (NSDictionary *loadedPlaylist in playlists) {
+            if ([[playlist objectForKey:@"Playlist Persistent ID"] isEqualToString:[loadedPlaylist objectForKey:@"Playlist Persistent ID"]]) {
+                [loadedPlaylist setValue:[NSNumber numberWithBool:YES] forKeyPath:@"isSelected"];
+            }
+        }
+    }
+    
 
     [self.tableView reloadData];
     [self.activityIndicator stopAnimation:nil];
@@ -73,7 +82,7 @@
 //    return view;
 
 //    [[NSTableCellView alloc] initWithFrame:]
-    
+    NSDictionary *playlist = [self.playlists objectAtIndex:row];
     // In IB the tableColumn has the identifier set to the same string as the keys in our dictionary
     NSString *identifier = [tableColumn identifier];
     
@@ -85,17 +94,87 @@
         // Then setup properties on the cellView based on the column
 //        cellView.textField.stringValue = @"Name";
         cellView.checkbox.title = [[self.playlists objectAtIndex:row] objectForKey:@"Name"];
+        cellView.row = row;
+        cellView.delegate = self;
+        if ([[playlist objectForKey:@"isSelected"] boolValue]) {
+            [cellView.checkbox setState:1];
+        }
+        else {
+            [cellView.checkbox setState:0];
+        }
+        return cellView;
+    }
+    if ([identifier isEqualToString:@"iconColumn"]) {
+        
+        // We pass us as the owner so we can setup target/actions into this main controller object
+        NSTableCellView *cellView = [tableView makeViewWithIdentifier:@"titleCell" owner:self];
+        
+        // Then setup properties on the cellView based on the column
+        //        cellView.textField.stringValue = @"Name";
+        
+        cellView.textField.stringValue = [playlist objectForKey:@"Name"];
+        
+        NSString *imageString = @"";
+        
+        if ([[playlist objectForKey:@"Name"] isEqualToString:@"Library"]) {
+            imageString = @"library";
+        }
+        
+        if ([[playlist objectForKey:@"Folder"] boolValue]) {
+            imageString = @"folder";
+        }
+        else if (![playlist objectForKey:@"Folder"] && ![playlist objectForKey:@"Parent Persistent ID"]) {
+            imageString = @"playlist";
+        }
+        
+//        Determine how many levels this playlist is nested.
+        NSInteger depth = [self nestedLevels:playlist currentLevel:0];
+        NSString *depthString = @"";
+
+        for (int i = 0; i < depth; i++) {
+            cellView.imageView.layer.opacity = 0.5;
+            depthString = [depthString stringByAppendingString:@"     "];
+        }
+        cellView.textField.stringValue = [depthString stringByAppendingString:[playlist objectForKey:@"Name"]];
+        
+        
+        
+        int distinguishedKind = [[playlist objectForKey:@"Distinguished Kind"] intValue];
+        switch (distinguishedKind) {
+            case 3:
+                imageString = @"tv";
+                break;
+                
+            case 2:
+                imageString = @"movie";
+                break;
+                
+            case 10:
+                imageString = @"podcast";
+                break;
+                
+            case 26:
+                imageString = @"genius";
+                break;
+                
+            case 4:
+                imageString = @"music";
+                break;
+                
+                
+            default:
+                break;
+        }
+        
+        cellView.imageView.image = [NSImage imageNamed:imageString];
         return cellView;
     }
     else if ([identifier isEqualToString:@"countColumn"]) {
         NSTableCellView *cellView = [tableView makeViewWithIdentifier:@"countCell" owner:self];
-        NSLog(@" CELL%@", cellView);
         cellView.backgroundStyle = NSBackgroundStyleDark;
-//        NSArray *items = [[self.playlists objectAtIndex:row] objectForKey:@"Playlist Items"];
-//        cellView.textField.stringValue = [NSString stringWithFormat:@"%ld", [items count]];
-//        cellView.label.stringValue = @"sdf";
-//        cellView.stringValue = @"dasfdf";
-        [cellView.textField setStringValue:@"dsf"];
+        NSArray *items = [[self.playlists objectAtIndex:row] objectForKey:@"Playlist Items"];
+        cellView.textField.stringValue = [NSString stringWithFormat:@"%ld Items", [items count]];
+        return cellView;
     }
     return nil;
 }
@@ -103,14 +182,11 @@
 #pragma mark - Data Stuff
 
 -(NSArray*)getSelectedPlaylists {
-    int i = 0;
     NSMutableArray *selected = [NSMutableArray array];
     for (NSDictionary *playlist in self.playlists) {
-        TPICheckboxTableCellView *cell = [self.tableView viewAtColumn:0 row:i makeIfNecessary:NO];
-        if ([cell.checkbox state] == 1) {
+        if ([[playlist objectForKey:@"isSelected"] boolValue] == TRUE) {
             [selected addObject:playlist];
         }
-        i++;
     }
     return [NSArray arrayWithArray:selected];
 }
@@ -122,8 +198,15 @@
     
 }
 
+-(void) saveSelectedPlaylists {
+    NSArray *pls = [self getSelectedPlaylists];
+    [[NSUserDefaults standardUserDefaults] setObject:pls forKey:@"LastPlaylists"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    [self.statusText setStringValue:@"Selected Playlists Saved"];
 
+}
 -(void)doCopyMusic {
+    [self saveSelectedPlaylists];
     [self.activityIndicator startAnimation:nil];
     
     [self.statusText setStringValue:@"Waiting for selection of destination folder..."];
@@ -181,6 +264,7 @@
     
     NSArray *selectedPlaylists = [self getSelectedPlaylists];
     
+
     
     //Loop through playlists, generate M3U's AND
     NSMutableArray *requiredSongs = [NSMutableArray array];
@@ -273,4 +357,36 @@
 
 }
 
+-(NSInteger)nestedLevels:(NSDictionary *)playlist currentLevel:(NSInteger)level {
+    if ([playlist objectForKey:@"Parent Persistent ID"]) {
+        level ++;
+        for (NSDictionary *parent in self.playlists) {
+            if ([[parent objectForKey:@"Playlist Persistent ID"] isEqualToString:[playlist objectForKey:@"Parent Persistent ID"]]) {
+                return [self nestedLevels:parent currentLevel:level];
+            }
+        }
+        return level;
+    }
+    else {
+        return level;
+    }
+}
+
+-(BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row {
+    TPICheckboxTableCellView *cell = [tableView viewAtColumn:0 row:row makeIfNecessary:NO];
+    [cell.checkbox setState:!cell.checkbox.state];
+    
+    [[self.playlists objectAtIndex:row] setValue:[NSNumber numberWithBool:cell
+                                                  .checkbox.state] forKeyPath:@"isSelected"];
+    
+    return FALSE;
+}
+
+-(void)CellTickedWasChanged:(TPICheckboxTableCellView *)cell row:(NSInteger)row {
+
+    [[self.playlists objectAtIndex:row] setValue:[NSNumber numberWithBool:cell.checkbox.state] forKeyPath:@"isSelected"];
+}
+- (IBAction)saveSelected:(id)sender {
+    [self saveSelectedPlaylists];
+}
 @end
