@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		600814621982A886003C1138 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600814611982A886003C1138 /* Cocoa.framework */; };
+		6008146C1982A886003C1138 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6008146A1982A886003C1138 /* InfoPlist.strings */; };
+		6008146E1982A886003C1138 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6008146D1982A886003C1138 /* main.m */; };
+		600814721982A886003C1138 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 600814701982A886003C1138 /* Credits.rtf */; };
+		600814751982A886003C1138 /* TPIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 600814741982A886003C1138 /* TPIAppDelegate.m */; };
+		600814781982A886003C1138 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600814761982A886003C1138 /* MainMenu.xib */; };
+		6008147A1982A886003C1138 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 600814791982A886003C1138 /* Images.xcassets */; };
+		600814811982A886003C1138 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600814801982A886003C1138 /* XCTest.framework */; };
+		600814821982A886003C1138 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600814611982A886003C1138 /* Cocoa.framework */; };
+		6008148A1982A887003C1138 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 600814881982A887003C1138 /* InfoPlist.strings */; };
+		6008148C1982A887003C1138 /* PlaylistGrabberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6008148B1982A887003C1138 /* PlaylistGrabberTests.m */; };
+		600814A21982B100003C1138 /* TPIPlaylistSelectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 600814A01982B100003C1138 /* TPIPlaylistSelectionWindowController.m */; };
+		600814A31982B100003C1138 /* TPIPlaylistSelectionWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600814A11982B100003C1138 /* TPIPlaylistSelectionWindowController.xib */; };
+		600814A71982B142003C1138 /* TPISelectFileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 600814A51982B142003C1138 /* TPISelectFileWindowController.m */; };
+		600814A81982B142003C1138 /* TPISelectFileWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 600814A61982B142003C1138 /* TPISelectFileWindowController.xib */; };
+		600814AE1982BD0D003C1138 /* TPICheckboxTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 600814AD1982BD0D003C1138 /* TPICheckboxTableCellView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		600814831982A887003C1138 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 600814561982A886003C1138 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6008145D1982A886003C1138;
+			remoteInfo = PlaylistGrabber;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6008145E1982A886003C1138 /* PlaylistGrabber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaylistGrabber.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		600814611982A886003C1138 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		600814641982A886003C1138 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		600814651982A886003C1138 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		600814661982A886003C1138 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		600814691982A886003C1138 /* PlaylistGrabber-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PlaylistGrabber-Info.plist"; sourceTree = "<group>"; };
+		6008146B1982A886003C1138 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6008146D1982A886003C1138 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6008146F1982A886003C1138 /* PlaylistGrabber-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlaylistGrabber-Prefix.pch"; sourceTree = "<group>"; };
+		600814711982A886003C1138 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		600814731982A886003C1138 /* TPIAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPIAppDelegate.h; sourceTree = "<group>"; };
+		600814741982A886003C1138 /* TPIAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPIAppDelegate.m; sourceTree = "<group>"; };
+		600814771982A886003C1138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		600814791982A886003C1138 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6008147F1982A886003C1138 /* PlaylistGrabberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaylistGrabberTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		600814801982A886003C1138 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		600814871982A887003C1138 /* PlaylistGrabberTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PlaylistGrabberTests-Info.plist"; sourceTree = "<group>"; };
+		600814891982A887003C1138 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6008148B1982A887003C1138 /* PlaylistGrabberTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaylistGrabberTests.m; sourceTree = "<group>"; };
+		6008149F1982B100003C1138 /* TPIPlaylistSelectionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPIPlaylistSelectionWindowController.h; path = Windows/TPIPlaylistSelectionWindowController.h; sourceTree = "<group>"; };
+		600814A01982B100003C1138 /* TPIPlaylistSelectionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPIPlaylistSelectionWindowController.m; path = Windows/TPIPlaylistSelectionWindowController.m; sourceTree = "<group>"; };
+		600814A11982B100003C1138 /* TPIPlaylistSelectionWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TPIPlaylistSelectionWindowController.xib; path = Windows/TPIPlaylistSelectionWindowController.xib; sourceTree = "<group>"; };
+		600814A41982B142003C1138 /* TPISelectFileWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPISelectFileWindowController.h; path = Windows/TPISelectFileWindowController.h; sourceTree = "<group>"; };
+		600814A51982B142003C1138 /* TPISelectFileWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPISelectFileWindowController.m; path = Windows/TPISelectFileWindowController.m; sourceTree = "<group>"; };
+		600814A61982B142003C1138 /* TPISelectFileWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TPISelectFileWindowController.xib; path = Windows/TPISelectFileWindowController.xib; sourceTree = "<group>"; };
+		600814AC1982BD0D003C1138 /* TPICheckboxTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPICheckboxTableCellView.h; sourceTree = "<group>"; };
+		600814AD1982BD0D003C1138 /* TPICheckboxTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPICheckboxTableCellView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6008145B1982A886003C1138 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				600814621982A886003C1138 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6008147C1982A886003C1138 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				600814821982A886003C1138 /* Cocoa.framework in Frameworks */,
+				600814811982A886003C1138 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		600814551982A886003C1138 = {
+			isa = PBXGroup;
+			children = (
+				600814671982A886003C1138 /* PlaylistGrabber */,
+				600814851982A887003C1138 /* PlaylistGrabberTests */,
+				600814601982A886003C1138 /* Frameworks */,
+				6008145F1982A886003C1138 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6008145F1982A886003C1138 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6008145E1982A886003C1138 /* PlaylistGrabber.app */,
+				6008147F1982A886003C1138 /* PlaylistGrabberTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		600814601982A886003C1138 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				600814611982A886003C1138 /* Cocoa.framework */,
+				600814801982A886003C1138 /* XCTest.framework */,
+				600814631982A886003C1138 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		600814631982A886003C1138 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				600814641982A886003C1138 /* AppKit.framework */,
+				600814651982A886003C1138 /* CoreData.framework */,
+				600814661982A886003C1138 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		600814671982A886003C1138 /* PlaylistGrabber */ = {
+			isa = PBXGroup;
+			children = (
+				600814731982A886003C1138 /* TPIAppDelegate.h */,
+				600814741982A886003C1138 /* TPIAppDelegate.m */,
+				600814761982A886003C1138 /* MainMenu.xib */,
+				600814A41982B142003C1138 /* TPISelectFileWindowController.h */,
+				600814A51982B142003C1138 /* TPISelectFileWindowController.m */,
+				600814A61982B142003C1138 /* TPISelectFileWindowController.xib */,
+				6008149F1982B100003C1138 /* TPIPlaylistSelectionWindowController.h */,
+				600814A01982B100003C1138 /* TPIPlaylistSelectionWindowController.m */,
+				600814A11982B100003C1138 /* TPIPlaylistSelectionWindowController.xib */,
+				600814AC1982BD0D003C1138 /* TPICheckboxTableCellView.h */,
+				600814AD1982BD0D003C1138 /* TPICheckboxTableCellView.m */,
+				600814791982A886003C1138 /* Images.xcassets */,
+				600814681982A886003C1138 /* Supporting Files */,
+			);
+			path = PlaylistGrabber;
+			sourceTree = "<group>";
+		};
+		600814681982A886003C1138 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				600814691982A886003C1138 /* PlaylistGrabber-Info.plist */,
+				6008146A1982A886003C1138 /* InfoPlist.strings */,
+				6008146D1982A886003C1138 /* main.m */,
+				6008146F1982A886003C1138 /* PlaylistGrabber-Prefix.pch */,
+				600814701982A886003C1138 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		600814851982A887003C1138 /* PlaylistGrabberTests */ = {
+			isa = PBXGroup;
+			children = (
+				6008148B1982A887003C1138 /* PlaylistGrabberTests.m */,
+				600814861982A887003C1138 /* Supporting Files */,
+			);
+			path = PlaylistGrabberTests;
+			sourceTree = "<group>";
+		};
+		600814861982A887003C1138 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				600814871982A887003C1138 /* PlaylistGrabberTests-Info.plist */,
+				600814881982A887003C1138 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6008145D1982A886003C1138 /* PlaylistGrabber */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6008148F1982A887003C1138 /* Build configuration list for PBXNativeTarget "PlaylistGrabber" */;
+			buildPhases = (
+				6008145A1982A886003C1138 /* Sources */,
+				6008145B1982A886003C1138 /* Frameworks */,
+				6008145C1982A886003C1138 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlaylistGrabber;
+			productName = PlaylistGrabber;
+			productReference = 6008145E1982A886003C1138 /* PlaylistGrabber.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6008147E1982A886003C1138 /* PlaylistGrabberTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 600814921982A887003C1138 /* Build configuration list for PBXNativeTarget "PlaylistGrabberTests" */;
+			buildPhases = (
+				6008147B1982A886003C1138 /* Sources */,
+				6008147C1982A886003C1138 /* Frameworks */,
+				6008147D1982A886003C1138 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				600814841982A887003C1138 /* PBXTargetDependency */,
+			);
+			name = PlaylistGrabberTests;
+			productName = PlaylistGrabberTests;
+			productReference = 6008147F1982A886003C1138 /* PlaylistGrabberTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		600814561982A886003C1138 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TPI;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = twopicode;
+				TargetAttributes = {
+					6008147E1982A886003C1138 = {
+						TestTargetID = 6008145D1982A886003C1138;
+					};
+				};
+			};
+			buildConfigurationList = 600814591982A886003C1138 /* Build configuration list for PBXProject "PlaylistGrabber" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 600814551982A886003C1138;
+			productRefGroup = 6008145F1982A886003C1138 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6008145D1982A886003C1138 /* PlaylistGrabber */,
+				6008147E1982A886003C1138 /* PlaylistGrabberTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6008145C1982A886003C1138 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6008146C1982A886003C1138 /* InfoPlist.strings in Resources */,
+				6008147A1982A886003C1138 /* Images.xcassets in Resources */,
+				600814721982A886003C1138 /* Credits.rtf in Resources */,
+				600814781982A886003C1138 /* MainMenu.xib in Resources */,
+				600814A31982B100003C1138 /* TPIPlaylistSelectionWindowController.xib in Resources */,
+				600814A81982B142003C1138 /* TPISelectFileWindowController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6008147D1982A886003C1138 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6008148A1982A887003C1138 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6008145A1982A886003C1138 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				600814A21982B100003C1138 /* TPIPlaylistSelectionWindowController.m in Sources */,
+				600814751982A886003C1138 /* TPIAppDelegate.m in Sources */,
+				600814A71982B142003C1138 /* TPISelectFileWindowController.m in Sources */,
+				600814AE1982BD0D003C1138 /* TPICheckboxTableCellView.m in Sources */,
+				6008146E1982A886003C1138 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6008147B1982A886003C1138 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6008148C1982A887003C1138 /* PlaylistGrabberTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		600814841982A887003C1138 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6008145D1982A886003C1138 /* PlaylistGrabber */;
+			targetProxy = 600814831982A887003C1138 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6008146A1982A886003C1138 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6008146B1982A886003C1138 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		600814701982A886003C1138 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				600814711982A886003C1138 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		600814761982A886003C1138 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				600814771982A886003C1138 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		600814881982A887003C1138 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				600814891982A887003C1138 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6008148D1982A887003C1138 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6008148E1982A887003C1138 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		600814901982A887003C1138 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PlaylistGrabber/PlaylistGrabber-Prefix.pch";
+				INFOPLIST_FILE = "PlaylistGrabber/PlaylistGrabber-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		600814911982A887003C1138 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PlaylistGrabber/PlaylistGrabber-Prefix.pch";
+				INFOPLIST_FILE = "PlaylistGrabber/PlaylistGrabber-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		600814931982A887003C1138 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PlaylistGrabber.app/Contents/MacOS/PlaylistGrabber";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PlaylistGrabber/PlaylistGrabber-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PlaylistGrabberTests/PlaylistGrabberTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		600814941982A887003C1138 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PlaylistGrabber.app/Contents/MacOS/PlaylistGrabber";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PlaylistGrabber/PlaylistGrabber-Prefix.pch";
+				INFOPLIST_FILE = "PlaylistGrabberTests/PlaylistGrabberTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		600814591982A886003C1138 /* Build configuration list for PBXProject "PlaylistGrabber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6008148D1982A887003C1138 /* Debug */,
+				6008148E1982A887003C1138 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6008148F1982A887003C1138 /* Build configuration list for PBXNativeTarget "PlaylistGrabber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				600814901982A887003C1138 /* Debug */,
+				600814911982A887003C1138 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		600814921982A887003C1138 /* Build configuration list for PBXNativeTarget "PlaylistGrabberTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				600814931982A887003C1138 /* Debug */,
+				600814941982A887003C1138 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 600814561982A886003C1138 /* Project object */;
+}
