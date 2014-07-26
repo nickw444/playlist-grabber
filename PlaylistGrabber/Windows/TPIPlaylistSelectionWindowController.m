@@ -216,7 +216,8 @@
     
     // Enable the selection of files in the dialog.
     [openDlg setCanChooseFiles:NO];
-    
+    [openDlg setCanCreateDirectories:YES];
+
     // Enable the selection of directories in the dialog.
     [openDlg setCanChooseDirectories:YES];
     
@@ -389,4 +390,6 @@
 - (IBAction)saveSelected:(id)sender {
     [self saveSelectedPlaylists];
 }
+
+
 @end

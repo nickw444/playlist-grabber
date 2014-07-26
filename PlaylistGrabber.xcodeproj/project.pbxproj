@@ -187,6 +187,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6008148F1982A887003C1138 /* Build configuration list for PBXNativeTarget "PlaylistGrabber" */;
 			buildPhases = (
+				6015FADE1983FED500FD49E6 /* ShellScript */,
 				6008145A1982A886003C1138 /* Sources */,
 				6008145B1982A886003C1138 /* Frameworks */,
 				6008145C1982A886003C1138 /* Resources */,
@@ -275,6 +276,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6015FADE1983FED500FD49E6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6008145A1982A886003C1138 /* Sources */ = {

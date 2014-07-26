@@ -28,6 +28,14 @@
 {
     [super windowDidLoad];
     
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"lastPlaylistURL"]) {
+        NSURL *url = [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"lastPlaylistURL"]];
+        self.lastURL = url;
+        NSString *file = [[[self.lastURL absoluteString] stringByReplacingOccurrencesOfString:@"file://" withString:@""] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [self.filenameLabel setStringValue:file];
+        [self.continueButton setEnabled:TRUE];
+    }
+    
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
@@ -35,6 +43,8 @@
 
     TPIPlaylistSelectionWindowController *next = [[TPIPlaylistSelectionWindowController alloc] initWithWindowNibName:@"TPIPlaylistSelectionWindowController"];
     
+    [[NSUserDefaults standardUserDefaults] setObject:[self.lastURL absoluteString] forKey:@"lastPlaylistURL"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     TPIAppDelegate *delegate = (TPIAppDelegate *)[[NSApplication sharedApplication]delegate];
     next.itunesURL = self.lastURL;
     NSLog(@"%@", self.lastURL);
@@ -74,7 +84,7 @@
         }
         
         NSURL* fileName = [files objectAtIndex:0];
-        NSString *file = [[fileName absoluteString] stringByReplacingOccurrencesOfString:@"file://" withString:@""];
+        NSString *file = [[[fileName absoluteString] stringByReplacingOccurrencesOfString:@"file://" withString:@""] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
         [self.filenameLabel setStringValue:file];
         [self.continueButton setEnabled:TRUE];

@@ -18,5 +18,7 @@
     [self.windowControllers addObject:first];
     [first showWindow:first.window];
 }
-
+- (BOOL) applicationShouldTerminateAfterLastWindowClosed: (NSApplication *) theApplication {
+    return YES;
+}
 @end
